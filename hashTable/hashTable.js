@@ -1,4 +1,3 @@
-'use strict'
 
 function HashTable (size) {
   this.buckets = Array(size)
@@ -36,6 +35,33 @@ HashTable.prototype.update = function (key, value) {
   } else {
     findNodeInAbucket(index, this, key, value)
   }
+}
+
+HashTable.prototype.get = function (key) {
+  let index = this.hash(key)
+  if (!this.buckets[index]) {
+    return null
+  } else {
+    let currentNode = this.buckets[index]
+
+    while (currentNode) {
+      if (currentNode.key === key) return currentNode.value
+      currentNode = currentNode.next
+    }
+
+    return null
+  }
+}
+
+HashTable.prototype.retrieveAll = function () {
+  let allNodes = []
+  this.buckets.forEach(function (node) {
+    while (node) {
+      allNodes.push(node)
+      node = node.next
+    }
+  })
+  return allNodes
 }
 
 function addNewBucket (key, value, index, HashTable) {

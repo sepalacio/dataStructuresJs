@@ -1,4 +1,3 @@
-'use strict'
 
 const BST = require('./binarySearchTree')
 

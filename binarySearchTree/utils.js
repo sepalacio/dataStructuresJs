@@ -1,4 +1,3 @@
-'use stric'
 
 const BST = require('./binarySearchTree')
 
